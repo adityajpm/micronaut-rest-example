@@ -1,0 +1,27 @@
+micronaut:
+  application:
+    name: micronaut-rest-example
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+        step: PT1M
+
+endpoints:
+  health:
+    enabled: true
+    sensitive: false # non-secured endpoint
+    details-visible: ANONYMOUS # show details for everyone
+    url:
+      enabled: true
+  readiness:
+    enabled: true
+    sensitive: false
+  prometheus:
+    enabled: true
+    sensitive: false
+  routes:
+    enabled: true
+    sensitive: false

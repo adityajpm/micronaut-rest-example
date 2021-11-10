@@ -1,0 +1,29 @@
+openapi: 3.0.1
+info:
+  title: Micronaut REST Example
+  description: Simple REST Service example implementated using Micronaut
+  contact:
+    email: jpmlabs@jpmorgan.com
+  version: 1.0.0
+schemes:
+  - "http"
+paths:
+  /transfer:
+    post:
+      summary: "Add a transfer request"
+      description: ""
+      operationId: "addPet"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/text"
+      parameters:
+        - in: "body"
+          name: "transfer details"
+          description: "Transfer details"
+          required: true
+          schema:
+            $ref: './schemas/TransferDetails.json'
+      responses:
+        "202":
+          description: "Transfer Request Accepted"
