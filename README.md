@@ -18,3 +18,15 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 - [Building Graal Images](https://guides.micronaut.io/latest/micronaut-creating-first-graal-app.html)
 - [Micronaut Guides](https://micronaut.io/guides/)
 - [Micronaut Launch](https://micronaut.io/launch/)
+
+
+### Request Test Example
+POST http://localhost:8080/
+Content-Type: application/json
+
+{
+"userId":"01FM4JE6DVQ9MP08YREJRW6AYZ",
+"amount":10,
+"accountFrom":"12345678",
+"accountTo":"12345679"
+}
