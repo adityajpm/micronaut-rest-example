@@ -3,7 +3,7 @@
 The project demonstrates how a REST service can be built using micronaut
 
 ### Repo
-- git clone git@github.com:adityaIndexlabs/micronaut-rest-example.git    
+- git clone https://github.com/adityajpm/micronaut-rest-example.git    
 
 ### Micronaut
 Similar to Spring Boot but has faster boot time, as most of the framework logic is computed at compilation time by using byte code enrichment during compilation time. This 
