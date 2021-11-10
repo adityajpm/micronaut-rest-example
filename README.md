@@ -6,7 +6,7 @@ The project demonstrates how a REST service can be built using micronaut
 - git clone https://github.com/adityajpm/micronaut-rest-example.git    
 
 ### Micronaut
-Similar to Spring Boot but has faster boot time, as most of the framework logic is computed at compilation time. Micronaut uses byte code enrichment during compilation time. This eliminates need for Runtime Reflection, Runtime Proxies, Dynamic Class Loading.
+Similar to Spring Boot but has faster boot time, as most of the framework logic is computed at compilation time. Micronaut uses byte code enrichment during compilation time. This eliminates need for Runtime Reflection, Runtime Proxies and Dynamic Class Loading.
 
 ### Setup
 - Install JDK 17
