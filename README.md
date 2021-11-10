@@ -16,3 +16,5 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 ### Useful Links
 
 [Building Graal Images](https://guides.micronaut.io/latest/micronaut-creating-first-graal-app.html)
+[Micronaut Guides](https://micronaut.io/guides/)
+[Micronaut Launch](https://micronaut.io/launch/)
