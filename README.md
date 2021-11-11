@@ -30,3 +30,15 @@ Content-Type: application/json
 "accountFrom":"12345678",
 "accountTo":"12345679"
 }
+
+### Demo notes
+
+- Context - Simple Rest App written in Micronaut and Kotlin
+- Setup instructions - Annotation Processing (like lombok)
+- Overview  of project 
+  - Starter Module
+  - Properties
+  - Structure / Hexagonal / Domain / Adapters / Domain 
+  - Api -> EndPoint ->
+  - Json Schema Validation used instead of Bean Validation Annotations, schema can be shared with frontend team
+  - 

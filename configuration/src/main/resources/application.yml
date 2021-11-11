@@ -25,3 +25,7 @@ endpoints:
   routes:
     enabled: true
     sensitive: false
+
+service:
+  application:
+    message: "Processing Transfer Request"
