@@ -10,8 +10,8 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 
 ### Setup
 - Install JDK 17
-- Micronaut requires Annotation Processing to setup see [ideaSetup](https://docs.micronaut.io/latest/guide/#ideaSetup) 
-- Kotlin requires Kapt for Annotation Processing to setup see   [kaptintellij](https://docs.micronaut.io/latest/guide/#kaptintellij)
+- Micronaut requires Annotation Processing, see [ideaSetup](https://docs.micronaut.io/latest/guide/#ideaSetup) 
+- Kotlin requires Kapt for Annotation Processing, see [kaptintellij](https://docs.micronaut.io/latest/guide/#kaptintellij)
 
 ### Useful Links
 
@@ -41,4 +41,6 @@ Content-Type: application/json
   - Structure / Hexagonal / Domain / Adapters / Domain 
   - Api -> EndPoint ->
   - Json Schema Validation used instead of Bean Validation Annotations, schema can be shared with frontend team
-  - 
+  - Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking
+  - Demo
+  - Useful links 
