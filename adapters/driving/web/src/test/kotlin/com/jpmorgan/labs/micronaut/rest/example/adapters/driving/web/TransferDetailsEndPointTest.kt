@@ -1,6 +1,7 @@
 package com.jpmorgan.labs.micronaut.rest.example.adapters.driving.web
 
 import assertk.assertThat
+import assertk.assertions.contains
 import assertk.assertions.isEqualTo
 import assertk.assertions.isNotEmpty
 import com.jpmorgan.labs.jvm.commons.domain.identity.Ulid
@@ -84,7 +85,7 @@ class TransferDetailsEndPointTest {
         val responseContent = response.receive<String>()
 
         assertThat(response.status).isEqualTo(HttpStatusCode.BadRequest)
-        assertThat(responseContent).isNotEmpty()
+        assertThat(responseContent).contains(Api.Resources.TransferDetails.Fields.amount)
     }
 
     @MockBean
