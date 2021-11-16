@@ -34,7 +34,7 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest
-class TransferDetailsEndPointTest {
+class TransferEndPointContractTest {
 
     @Inject
     lateinit var server: EmbeddedServer
@@ -53,6 +53,8 @@ class TransferDetailsEndPointTest {
 
     private val application: Application = mockk()
 
+
+
     @Test
     fun `creating a new transfer request works`()  = runBlocking {
         val transferDetails = TransferDetails(UserId.createFromULid(), Amount(10), AccountNumber("12345678"), AccountNumber("12345679"))
@@ -61,7 +63,7 @@ class TransferDetailsEndPointTest {
         val newTransferRequestId = Ulid.create()
         coEvery { application.transferRequest(transferDetails) } returns newTransferRequestId
 
-        val response: HttpResponse = client.post("http://${server.host}:${server.port}/${Api.Endpoints.Transfer.path}"){
+        val response: HttpResponse = client.post(server.url(Api.Endpoints.Transfer.path)){
             contentType(ContentType.Application.Json)
             body = transferRequestJson.toString()
         }
@@ -78,7 +80,7 @@ class TransferDetailsEndPointTest {
             remove(Api.Resources.TransferDetails.Fields.amount)
         }
 
-        val response: HttpResponse = client.post("http://${server.host}:${server.port}/${Api.Endpoints.Transfer.path}"){
+        val response: HttpResponse = client.post(server.url(Api.Endpoints.Transfer.path)){
             contentType(ContentType.Application.Json)
             body = transferRequestJson.toString()
         }
@@ -91,5 +93,7 @@ class TransferDetailsEndPointTest {
     @MockBean
     @Replaces(bean = Application::class, qualifier = [Primary::class])
     fun application(): Application = application
+
+    private fun EmbeddedServer.url(path : String) = "http://${host}:${port}/$path"
 
 }

@@ -9,16 +9,6 @@ import org.everit.json.schema.Schema
 import org.everit.json.schema.ValidationException
 import org.json.JSONObject
 
-fun Assert<JSONObject>.containsOnly(pair: Pair<String, Any>, vararg others: Pair<String, Any>) = given { actual ->
-
-    assertThat(actual.toMap()).containsOnly(*arrayOf(pair) + others)
-}
-
-fun Assert<JSONObject>.containsAll(pair: Pair<String, Any>, vararg others: Pair<String, Any>) = given { actual ->
-
-    assertThat(actual.toMap()).containsAll(*arrayOf(pair) + others)
-}
-
 fun Assert<JSONObject>.compliesWith(schema: Schema) = given { actual ->
 
     try {

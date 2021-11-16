@@ -9,7 +9,7 @@ object Versions {
     }
 
     object Kotlin {
-        const val value = "1.6.0-RC2"
+        const val value = "1.6.0"
 
         object Coroutines {
             const val value = "1.5.2"

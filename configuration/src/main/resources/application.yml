@@ -10,6 +10,11 @@ micronaut:
         step: PT1M
 
 endpoints:
+  all:
+    path: "/actuator"
+    enabled: false
+    sensitive: true
+    #    port: 8095 should be defined by devops
   health:
     enabled: true
     sensitive: false # non-secured endpoint
