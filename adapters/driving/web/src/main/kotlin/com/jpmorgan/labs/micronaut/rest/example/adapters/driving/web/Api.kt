@@ -32,32 +32,6 @@ object Api {
                 const val path = "/transfer"
             }
 
-            @Operation(summary = "Transfer Request")
-            @RequestBody(
-                description = "Details of the Item to be created",
-                content = [Content(
-                    schema = io.swagger.v3.oas.annotations.media.Schema(ref = "api/schemas/json/TransferDetails.json"),
-                    mediaType = MediaType.APPLICATION_JSON,
-                    examples = [
-                        ExampleObject( value = """
-                            {
-                                "userId":"01FM4JE6DVQ9MP08YREJRW6AYZ",
-                                "amount":10,
-                                "accountFrom":"12345678",
-                                "accountTo":"12345679"
-                            }
-                        """
-                        )
-                    ]
-                )]
-            )
-            @ApiResponse(
-                responseCode = "201",
-                content = [ Content(
-                    schema = io.swagger.v3.oas.annotations.media.Schema( name = "String" )
-                )]
-            )
-
             @Post(consumes = [MediaType.APPLICATION_JSON])
             suspend fun transferRequest(request: HttpRequest<String>): HttpResponse<String>
         }
