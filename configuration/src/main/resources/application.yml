@@ -7,6 +7,7 @@ micronaut:
       swagger-ui:
         paths: classpath:META-INF/swagger/views/swagger-ui
         mapping: /swagger-ui/**
+        enabled: true
   application:
     name: micronaut-rest-example
   metrics:

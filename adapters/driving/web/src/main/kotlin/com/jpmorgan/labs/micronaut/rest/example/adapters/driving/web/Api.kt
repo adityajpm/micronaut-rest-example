@@ -6,12 +6,18 @@ import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Post
 import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.info.Info
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.ExampleObject
+import io.swagger.v3.oas.annotations.parameters.RequestBody
+import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.everit.json.schema.Schema
 
 @OpenAPIDefinition(
     info = Info(
-        title = "Micronaut Rest Example : Transfer Service ",
+        title = "TransferService",
+        version = "0.0.1",
         description = "A example service to allow transfer requests to be made."
     )
 )
@@ -25,6 +31,32 @@ object Api {
 
                 const val path = "/transfer"
             }
+
+            @Operation(summary = "Transfer Request")
+            @RequestBody(
+                description = "Details of the Item to be created",
+                content = [Content(
+                    schema = io.swagger.v3.oas.annotations.media.Schema(ref = "api/schemas/json/TransferDetails.json"),
+                    mediaType = MediaType.APPLICATION_JSON,
+                    examples = [
+                        ExampleObject( value = """
+                            {
+                                "userId":"01FM4JE6DVQ9MP08YREJRW6AYZ",
+                                "amount":10,
+                                "accountFrom":"12345678",
+                                "accountTo":"12345679"
+                            }
+                        """
+                        )
+                    ]
+                )]
+            )
+            @ApiResponse(
+                responseCode = "201",
+                content = [ Content(
+                    schema = io.swagger.v3.oas.annotations.media.Schema( name = "String" )
+                )]
+            )
 
             @Post(consumes = [MediaType.APPLICATION_JSON])
             suspend fun transferRequest(request: HttpRequest<String>): HttpResponse<String>

@@ -14,10 +14,10 @@ object Dependencies {
     fun micronautBom(version: String = Versions.Micronaut.value): ModuleDependency = micronaut("micronaut-bom", version)
     fun micronautRuntime(version: String = Versions.Micronaut.value) = micronaut("micronaut-runtime", version)
     fun micronautHttpServerNetty(version: String = Versions.Micronaut.value) = micronaut("micronaut-http-server-netty", version)
-    fun micronautManagement(version: String = Versions.Micronaut.value) = micronaut("micronaut-management", version)
     fun micronautHttp(version: String = Versions.Micronaut.value) = micronaut("micronaut-http", version)
     fun micronautHttpServer(version: String = Versions.Micronaut.value) = micronaut("micronaut-http-server", version)
     fun micronautInject(version: String = Versions.Micronaut.value) = micronaut("micronaut-inject-java", version)
+    fun micronautManagement(version: String = Versions.Micronaut.value) = micronaut("micronaut-management", version)
 
     fun micronautTestJunit5(version: String = Versions.Micronaut.Test.value) = dependency("io.micronaut.test","micronaut-test-junit5", version)
 

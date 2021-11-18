@@ -1,10 +1,10 @@
 openapi: 3.0.1
 info:
-  title: Micronaut REST Example
+  title: Transfer Service
   description: Simple REST Service example implementated using Micronaut
   contact:
     email: jpmlabs@jpmorgan.com
-  version: 1.0.0
+  version: 0.0.1
 schemes:
   - "http"
 paths:

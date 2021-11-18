@@ -37,7 +37,7 @@ object Versions {
     }
 
     object Micronaut {
-        const val value = "3.1.1"
+        const val value = "3.1.4"
 
         object KotlinRuntime {
             const val value = "3.0.0"
