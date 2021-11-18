@@ -25,7 +25,7 @@ class TransferEndPoint(private val application: Application) : Api.Endpoints.Tra
     override val path = Api.Endpoints.Transfer.path
 
     override suspend fun transferRequest(request: HttpRequest<String>): HttpResponse<String> {
-        val json = JSONObject(request.body.get())
+        val json = request.body.get().let(::JSONObject)
 
         val validationResult = validateJson(json)
 

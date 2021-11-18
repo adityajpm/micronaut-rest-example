@@ -4,6 +4,7 @@ import org.gradle.api.internal.artifacts.dependencies.DefaultExternalModuleDepen
 object Dependencies {
 
     fun log4j2Slf4jAdapter(version: String = Versions.Log4j.value) = log4j2("log4j-slf4j-impl", version)
+    fun simpleSlf4jAdapter(version: String = Versions.Slf4jSimple.value) = dependency("org.slf4j","slf4j-simple", version)
 
     fun coroutinesSlf4j(version: String = Versions.Kotlin.Coroutines.value) = coroutines("slf4j", version)
     fun coroutinesCore(version: String = Versions.Kotlin.Coroutines.value) = coroutines("core", version)
@@ -17,6 +18,7 @@ object Dependencies {
     fun micronautHttp(version: String = Versions.Micronaut.value) = micronaut("micronaut-http", version)
     fun micronautHttpServer(version: String = Versions.Micronaut.value) = micronaut("micronaut-http-server", version)
     fun micronautInject(version: String = Versions.Micronaut.value) = micronaut("micronaut-inject-java", version)
+
     fun micronautTestJunit5(version: String = Versions.Micronaut.Test.value) = dependency("io.micronaut.test","micronaut-test-junit5", version)
 
     fun micronautKotlinRuntime(version: String = Versions.Micronaut.KotlinRuntime.value) = dependency("io.micronaut.kotlin", "micronaut-kotlin-runtime", version)
@@ -24,6 +26,9 @@ object Dependencies {
     fun micronautMicrometerPrometheusRegistry(version: String = Versions.Micronaut.MicrometerMicrometer.value) = micronautMicrometer("micronaut-micrometer-registry-prometheus", version)
 
     fun ktorClientApache(version: String = Versions.Ktor.value) = ktor("ktor-client-apache", version)
+
+    fun micronautOpenApi(version: String = Versions.Micronaut.OpenApi.value) = dependency("io.micronaut.openapi", "micronaut-openapi", version)
+    fun swaggerAnnotations(version: String = Versions.Swagger.value) = dependency("io.swagger.core.v3", "swagger-annotations", version)
 
     fun json(version: String = Versions.Json.value) = dependency("org.json", "json", version)
     fun everitJsonSchema(version: String = Versions.EveritJsonSchema.value) = dependency("com.github.everit-org.json-schema", "org.everit.json.schema", version)

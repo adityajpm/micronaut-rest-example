@@ -8,10 +8,11 @@ dependencies {
         implementation(project(":commons-json-schema-utils"))
         implementation(project(":commons-logging"))
 
-
         implementation(micronautMicrometerCore())
         implementation(micronautMicrometerPrometheusRegistry())
         implementation(guava())
+        implementation(swaggerAnnotations())
+        micronautOpenApi().also(::implementation).also(::kapt)
 
         runtimeOnly(micronautHttpServerNetty())
 

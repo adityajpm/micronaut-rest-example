@@ -5,7 +5,16 @@ import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Post
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
+import io.swagger.v3.oas.annotations.info.Info
 import org.everit.json.schema.Schema
+
+@OpenAPIDefinition(
+    info = Info(
+        title = "Micronaut Rest Example : Transfer Service ",
+        description = "A example service to allow transfer requests to be made."
+    )
+)
 
 object Api {
 

@@ -54,7 +54,6 @@ class TransferEndPointContractTest {
     private val application: Application = mockk()
 
 
-
     @Test
     fun `creating a new transfer request works`()  = runBlocking {
         val transferDetails = TransferDetails(UserId.createFromULid(), Amount(10), AccountNumber("12345678"), AccountNumber("12345679"))
@@ -88,6 +87,14 @@ class TransferEndPointContractTest {
 
         assertThat(response.status).isEqualTo(HttpStatusCode.BadRequest)
         assertThat(responseContent).contains(Api.Resources.TransferDetails.Fields.amount)
+    }
+
+    @Test
+    fun `creating a new person fails as expected when a body is missing`() = runBlocking {
+
+        val response: HttpResponse = client.post(server.url(Api.Endpoints.Transfer.path))
+
+        assertThat(response.status).isEqualTo(HttpStatusCode.BadRequest)
     }
 
     @MockBean

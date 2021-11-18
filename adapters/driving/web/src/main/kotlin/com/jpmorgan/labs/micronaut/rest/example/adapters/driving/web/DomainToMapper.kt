@@ -7,10 +7,10 @@ import com.jpmorgan.labs.micronaut.rest.example.asUserId
 import org.json.JSONObject
 
 internal fun JSONObject.toTransferRequest(): TransferDetails {
-    val userId = getString(Api.Resources.TransferDetails.Fields.userId)?.let(String::asUserId)!!
+    val userId = getString(Api.Resources.TransferDetails.Fields.userId).let(String::asUserId)
     val amount = getInt(Api.Resources.TransferDetails.Fields.amount).let(Int::asAmount)
-    val accountFrom = getString(Api.Resources.TransferDetails.Fields.accountFrom)?.let(String::asAccountNumber)!!
-    val accountTo = getString(Api.Resources.TransferDetails.Fields.accountTo)?.let(String::asAccountNumber)!!
+    val accountFrom = getString(Api.Resources.TransferDetails.Fields.accountFrom).let(String::asAccountNumber)
+    val accountTo = getString(Api.Resources.TransferDetails.Fields.accountTo).let(String::asAccountNumber)
     return TransferDetails(userId,  amount, accountFrom, accountTo)
 }
 

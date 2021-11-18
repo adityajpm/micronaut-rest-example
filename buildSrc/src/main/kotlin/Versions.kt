@@ -56,10 +56,18 @@ object Versions {
         object MicrometerMicrometer {
             const val value = "4.0.1"
         }
+
+        object OpenApi {
+            const val value = "3.2.0"
+        }
     }
 
     object Ktor {
         const val value = "1.6.4"
+    }
+
+    object Swagger {
+        const val value = "2.1.11"
     }
 
     object Avro {
@@ -99,7 +107,12 @@ object Versions {
     object KotlinLogging {
         const val value = "2.0.11"
     }
+
     object Log4j {
         const val value = "2.14.1"
+    }
+
+    object Slf4jSimple {
+        const val value = "1.7.32"
     }
 }
