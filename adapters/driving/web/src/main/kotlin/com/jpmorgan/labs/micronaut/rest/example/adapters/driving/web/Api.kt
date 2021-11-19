@@ -14,13 +14,13 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.everit.json.schema.Schema
 
-@OpenAPIDefinition(
-    info = Info(
-        title = "TransferService",
-        version = "0.0.1",
-        description = "A example service to allow transfer requests to be made."
-    )
-)
+//@OpenAPIDefinition(
+//    info = Info(
+//        title = "TransferService",
+//        version = "0.0.1",
+//        description = "A example service to allow transfer requests to be made."
+//    )
+//)
 
 object Api {
 
