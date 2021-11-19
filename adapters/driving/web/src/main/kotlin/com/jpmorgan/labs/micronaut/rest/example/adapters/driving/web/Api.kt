@@ -41,7 +41,7 @@ object Api {
 
         object JsonSchemas {
 
-            private const val standardRootDirectory = "api/schemas/json"
+            private const val standardRootDirectory = "META-INF/swagger/api/schemas/json"
 
             fun load(schemaPath: String): Schema = jsonSchemaUnderRootFolder(schemaPathFromRootFolder = schemaPath, rootFolderPath = standardRootDirectory)
         }
