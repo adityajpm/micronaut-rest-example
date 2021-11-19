@@ -37,9 +37,15 @@ allOpen {
     annotation("io.micronaut.context.annotation.Singleton")
 }
 
+//kapt {
+//    arguments {
+//        arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop")
+//        arg("micronaut.openapi.config.file", "api/Api.yml")
+//    }
+//}
+
 kapt {
     arguments {
-        arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop")
-        arg("micronaut.openapi.config.file", "api/Api.yml")
+        arg("micronaut.openapi.views.spec", "swagger-ui.enabled=true,swagger-ui.theme=flattop")
     }
 }

@@ -16,7 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "./schemas/json/TransferDetails.json"
+              $ref: "./api/schemas/json/TransferDetails.json"
             example:
               userId: 01FM4JE6DVQ9MP08YREJRW6AYZ
               amount: 10
