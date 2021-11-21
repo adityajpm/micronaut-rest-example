@@ -1,6 +1,9 @@
 package com.jpmorgan.labs.micronaut.rest.example.adapters.driving.web
 
 import com.jpmorgan.labs.jvm.commons.json.schema.utils.jsonSchemaUnderRootFolder
+import com.jpmorgan.labs.micronaut.rest.example.adapters.driving.web.Api.Endpoints.Transfer.Metrics.callName
+import io.micrometer.core.instrument.MeterRegistry
+import io.micrometer.core.instrument.Timer
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
@@ -13,19 +16,17 @@ import io.swagger.v3.oas.annotations.media.ExampleObject
 import io.swagger.v3.oas.annotations.parameters.RequestBody
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.everit.json.schema.Schema
-
-//@OpenAPIDefinition(
-//    info = Info(
-//        title = "TransferService",
-//        version = "0.0.1",
-//        description = "A example service to allow transfer requests to be made."
-//    )
-//)
+import kotlin.time.ExperimentalTime
+import kotlin.time.measureTimedValue
+import kotlin.time.toJavaDuration
 
 object Api {
 
+
     object Endpoints {
         interface Transfer : Endpoint {
+
+            val metrics: MeterRegistry
 
             companion object {
 
@@ -33,7 +34,12 @@ object Api {
             }
 
             @Post(consumes = [MediaType.APPLICATION_JSON])
+            suspend fun transferRequestEndpoint(request: HttpRequest<String>): HttpResponse<String> = metrics.measure(callName) { transferRequest(request) }
             suspend fun transferRequest(request: HttpRequest<String>): HttpResponse<String>
+
+            object Metrics {
+                const val callName = "transfer_request"
+            }
         }
     }
 
@@ -61,5 +67,6 @@ object Api {
     }
 
 }
+
 
 

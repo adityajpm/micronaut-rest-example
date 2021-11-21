@@ -17,7 +17,7 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest
-class ManagementEndpointsTest {
+private class ManagementEndpointsTest {
 
     @Inject
     lateinit var server: EmbeddedServer
@@ -50,20 +50,7 @@ class ManagementEndpointsTest {
         assertThat(response.status).isEqualTo(HttpStatusCode.OK)
     }
 
-    @Test
-    fun `successfully get the service Prometheus metrics`() = runBlocking {
 
-        val response : HttpResponse =  client.get(server.url(metricsPath))
 
-        assertThat(response.status).isEqualTo(HttpStatusCode.OK)
-    }
 
-    companion object {
-        const val basePath = "/actuator"
-        const val readinessPath = "$basePath/health/readiness"
-        const val livenessPath = "$basePath/health/liveness"
-        const val metricsPath = "$basePath/prometheus"
-    }
-
-    private fun EmbeddedServer.url(path : String) = "http://${host}:${port}$path"
 }

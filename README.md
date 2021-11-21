@@ -38,7 +38,7 @@ Content-Type: application/json
 - Overview  of project 
   - Starter Module
   - Properties
-  - Structure / Hexagonal / Domain / Adapters / Domain 
+  - Structure / Hexagonal / Domain / Adapters / Application 
   - Api -> EndPoint ->
   - Json Schema Validation used instead of Bean Validation Annotations, schema can be shared with frontend team
   - Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking

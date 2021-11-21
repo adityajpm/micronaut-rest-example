@@ -1,6 +1,7 @@
 package com.jpmorgan.labs.micronaut.rest.example.adapters.driving.web
 
 import com.jpmorgan.labs.micronaut.rest.example.application.Application
+import io.micrometer.core.instrument.MeterRegistry
 import io.micronaut.context.annotation.Context
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
@@ -14,7 +15,7 @@ import org.json.JSONObject
 
 @Context
 @Controller(Api.Endpoints.Transfer.path)
-class TransferEndPoint(private val application: Application) : Api.Endpoints.Transfer {
+class TransferEndPoint(private val application: Application, override val metrics: MeterRegistry) : Api.Endpoints.Transfer {
 
     @PostConstruct
     fun start() = logger.info { "Started" }
