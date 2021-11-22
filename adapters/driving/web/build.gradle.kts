@@ -20,6 +20,7 @@ dependencies {
         testImplementation(project(":commons-json-schema-test"))
         testImplementation(javaAnnotation())
         testImplementation(micronautTestJunit5())
+        testImplementation(junitJupiterParams())
         testApi(ktorClientApache())
 
         micronautInject().also(::implementation).also(::kapt).also(::kaptTest)
@@ -35,17 +36,4 @@ allOpen {
     annotation("io.micronaut.test.annotation.MockBean")
     annotation("io.micronaut.context.annotation.Context")
     annotation("io.micronaut.context.annotation.Singleton")
-}
-
-//kapt {
-//    arguments {
-//        arg("micronaut.openapi.views.spec", "redoc.enabled=true,rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop")
-//        arg("micronaut.openapi.config.file", "api/Api.yml")
-//    }
-//}
-
-kapt {
-    arguments {
-        arg("micronaut.openapi.views.spec", "swagger-ui.enabled=true,swagger-ui.theme=flattop")
-    }
 }

@@ -21,6 +21,10 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+import java.util.stream.Stream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest
@@ -54,7 +58,7 @@ private class CorsEndpointTest {
     fun beforeEach() = metrics.clear()
 
     @Test
-    fun `creating a new person increases the call count`() = runBlocking {
+    fun `allows CORS options calls to work`() = runBlocking {
 
         val response = client.options<HttpResponse>(server.url(Api.Endpoints.Transfer.path)) {
             headers.append(HttpHeaders.Origin, "http://localhost:8080")
@@ -65,18 +69,20 @@ private class CorsEndpointTest {
         assertThat(response.status).isEqualTo(HttpStatusCode.OK)
     }
 
-    @Test
-    fun `creating a new person increases the call count`(httpMethod: HttpMethod) = runBlocking {
+    @ParameterizedTest
+    @MethodSource("notAllowedHttpMethods")
+    fun `disallowed method is not allowed`(httpMethod: HttpMethod) = runBlocking {
 
         val response = client.options<HttpResponse>(server.url(Api.Endpoints.Transfer.path)) {
             headers.append(HttpHeaders.Origin, "http://localhost:8080")
-            headers.append(HttpHeaders.AccessControlRequestMethod, HttpMethod.Post.value)
+            headers.append(HttpHeaders.AccessControlRequestMethod, httpMethod.value)
 //          headers.append(HttpHeaders.AccessControlRequestMethod, "header value")
         }
 
-        assertThat(response.status).isEqualTo(HttpStatusCode.OK)
+        assertThat(response.status).isEqualTo(HttpStatusCode.Forbidden)
     }
 
-    private val HttpMethod.Companion.all: Set<HttpMethod> get() = setOf(Head, Options, Post, Delete, Put, Patch, Get)
+    private fun notAllowedHttpMethods(): Stream<Arguments> = (HttpMethod.all - HttpMethod.Get).map { Arguments.of(it) }.stream()
+    private val HttpMethod.Companion.all: Set<HttpMethod> get() = setOf(Head, Options, Delete, Put, Patch, Get)
 
 }

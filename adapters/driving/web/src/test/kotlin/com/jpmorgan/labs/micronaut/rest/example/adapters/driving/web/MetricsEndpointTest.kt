@@ -26,11 +26,9 @@ import io.mockk.mockk
 import jakarta.inject.Inject
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
-import java.time.Duration
 
 @TestInstance(PER_CLASS)
 @MicronautTest
@@ -74,7 +72,7 @@ private class MetricsEndpointTest {
 
 
     @Test
-    fun `creating a new person increases the call count`() = runBlocking {
+    fun `creating a transfer request increases the call count`() = runBlocking {
         val transferDetails = TransferDetails(UserId.createFromULid(), Amount(10), AccountNumber("12345678"), AccountNumber("12345679"))
         val transferRequestJson = transferDetails.toJson()
         val newTransferRequestId = Ulid.create()
@@ -96,7 +94,6 @@ private class MetricsEndpointTest {
         assertThat(response.status).isEqualTo(HttpStatusCode.OK)
         val transferRequestCountMeasurement = measurements.filter { it.isForCall(Api.Endpoints.Transfer.Metrics.callName) }.filter(MetricMeasurement::isCount).single()
         assertThat(transferRequestCountMeasurement.value.toDouble()).isEqualTo(2.0)
-
     }
 
     private fun String.parseAsPrometheusMetrics(): Sequence<MetricMeasurement> = split("\n").asSequence().filterNot { it.startsWith("#") }.filterNot { it.isEmpty() }.map { it.substring(0, it.lastIndexOf(" ")) to it.substring(it.lastIndexOf(" ") + 1, it.length) }.map { MetricMeasurement(it.first, it.second) }

@@ -48,6 +48,8 @@ object Dependencies {
     fun mockk(version: String = Versions.Mockk.value) = dependency("io.mockk", "mockk", version)
     fun junitJupiterApi(version: String = Versions.JUnit.Jupiter.value) = junitJupiter("junit-jupiter-api", version)
     fun junitJupiterEngine(version: String = Versions.JUnit.Jupiter.value) = junitJupiter("junit-jupiter-engine", version)
+    fun junitJupiterParams(version: String = Versions.JUnit.Jupiter.value) = junitJupiter("junit-jupiter-params", version)
+
 }
 
 private fun log4j2(name: String, version: String) = dependency("org.apache.logging.log4j", name, version)
