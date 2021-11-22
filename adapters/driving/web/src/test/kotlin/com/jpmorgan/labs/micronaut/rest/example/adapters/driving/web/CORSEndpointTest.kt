@@ -26,9 +26,13 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.util.stream.Stream
 
+/**
+ * Confirms configuration applied by io.micronaut.http.server.cors.CorsFilter
+ */
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @MicronautTest
-private class CorsEndpointTest {
+private class CORSEndpointTest {
 
     @Inject
     lateinit var server: EmbeddedServer
