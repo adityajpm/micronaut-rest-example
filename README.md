@@ -1,7 +1,6 @@
 # Micronaut REST example
 
-[comment]: <TODO> (TODO Split into script and presentation)
-[comment]: <> (I have been wokring at Chase for about two months in the Dynamo Cloud team)
+[comment]: <> (I have been working at Chase for about two months in the Dynamo Cloud team)
 [comment]: <> (I have used Micronaut for about a year in production and is being currently used in Dynamo Cloud team)
 [comment]: <> (The example project has been written in kotlin  , but all the mironaut setup, configuration  and annotations are identical when using Java)
 [comment]: <> (The feature of Mirconaut are to many to walk through in this presentation)
@@ -33,22 +32,13 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 - [Micronaut Guides](https://micronaut.io/guides/)
 - [Micronaut Launch](https://micronaut.io/launch/)
 
-### Request Test Example
-POST http://localhost:8080/
-Content-Type: application/json
-
-{
-"userId":"01FM4JE6DVQ9MP08YREJRW6AYZ",
-"amount":10,
-"accountFrom":"12345678",
-"accountTo":"12345679"
-}
-
 ### Demo notes
 
-- Context - Simple Rest App written in Micronaut and Kotlin
-- Overview  of project 
-  - Starter Module
+- Overview  of project -  Hexagonal Architecture
+ 
+- Entry Point -> Create Application Context using builder see Starter.kt 
+
+
 
 [comment]: <> (TODO What is the packages for)
 [comment]: <> (TODO How to add system properties)
@@ -66,9 +56,9 @@ Content-Type: application/json
 [comment]: <> (@Controller works in the same way as in Spring )
 [comment]: <> (@Context tells Micronaut this bean is eagerly instanstiated)
 [comment]: <> (Using Schema validation as apposed Bean Validation, that a preference)
-  - TransferEndPoint 
+  - TransferEndPoint
 
-[comment]: <TODO> (Controller annotation Write a few notes on Hexagonal Architecture, Find a )
+  - [comment]: <> (Controller annotation Write a few notes on Hexagonal Architecture, Find a diagram)
   - 
   - Json Schema Validation used instead of Bean Validation Annotations, schema can be shared with frontend team
   - Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking
