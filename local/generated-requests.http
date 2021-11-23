@@ -1,0 +1,10 @@
+###
+POST http://localhost:60681/transfer
+Content-Type: application/json
+
+{
+  "userId":"01FM4JE6DVQ9MP08YREJRW6AYZ",
+  "amount":10,
+  "accountFrom":"12345678",
+  "accountTo":"12345679"
+}

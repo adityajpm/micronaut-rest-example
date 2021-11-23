@@ -5,7 +5,6 @@ import io.micrometer.core.instrument.MeterRegistry
 import io.micronaut.context.annotation.Context
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpResponse
-import io.micronaut.http.HttpResponse.*
 import io.micronaut.http.annotation.Controller
 import jakarta.annotation.PostConstruct
 import jakarta.annotation.PreDestroy
@@ -13,7 +12,7 @@ import mu.KLogging
 import org.everit.json.schema.ValidationException
 import org.json.JSONObject
 
-@Context
+@Context //eager loading @Singleton lazy by default
 @Controller(Api.Endpoints.Transfer.path)
 class TransferEndPoint(private val application: Application, override val metrics: MeterRegistry) : Api.Endpoints.Transfer {
 
@@ -30,18 +29,17 @@ class TransferEndPoint(private val application: Application, override val metric
 
         val validationResult = validateJson(json)
 
-        return if (validationResult.isSuccess) {
+        return if (validateJson(json).isSuccess) {
             val transferId = application.transferRequest(json.toTransferRequest()).toString()
-            created(transferId)
+            HttpResponse.created(transferId)
         } else {
-            badRequest(validationResult.exceptionOrNull()!!.message)
+            HttpResponse.badRequest(validationResult.exceptionOrNull()!!.message)
         }
     }
 
-    private fun validateJson(json: JSONObject): Result<JSONObject> = kotlin.runCatching {
+    private fun validateJson(json: JSONObject): Result<Unit> = kotlin.runCatching {
         try {
             Api.Resources.TransferDetails.jsonSchema.validate(json)
-            json
         } catch (validationException: ValidationException) {
             error(validationException.allMessages.joinToString("\n"))
         }

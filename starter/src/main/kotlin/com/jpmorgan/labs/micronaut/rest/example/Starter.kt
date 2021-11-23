@@ -20,6 +20,6 @@ object Starter  {
  * required by gradle to run application from command line with command
  * ./gradlew run
  */
-fun main() {
-    Starter.main()
+fun main(vararg args: String) {
+    Starter.main(*args)
 }
