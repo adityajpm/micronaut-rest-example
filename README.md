@@ -32,13 +32,11 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 - [Micronaut Guides](https://micronaut.io/guides/)
 - [Micronaut Launch](https://micronaut.io/launch/)
 
-### Demo notes
 
 - Overview  of project -  Hexagonal Architecture
- 
+
+
 - Entry Point -> Create Application Context using builder see Starter.kt 
-
-
 
 [comment]: <> (TODO What is the packages for)
 [comment]: <> (TODO How to add system properties)
@@ -48,7 +46,11 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
   - application.yml - can be overridden by system properties
 
 [comment]: <> (Write a few notes on Hexagonal Architecture, Find a diagram )
-  - Structure / Hexagonal / Domain / Adapters / Application 
+  - Structure / Hexagonal / Domain / Adapters / Application
+    ![Diagram](doc/HexagonalArchitecture.png)
+
+for more info [Hexagonal Architecture article](https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c)
+
 
 [comment]: <> (Transfer interface outlines the exposed web methods, @POST annotation )
   - Api
