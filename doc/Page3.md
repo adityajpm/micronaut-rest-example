@@ -1,38 +1,40 @@
-###Starter.kt 
-- Entry Point -> Create Application Context using builder see Starter.kt
-- application.yml - can be overridden by system properties
+###Starter.kt
+- Entry Point -> Create Application Context using builder
 
+[comment]: <> (passing Application Arguments, Packages to scan for Beans and main class )
+[comment]: <> (show build.gradle.kts showing web adapter dependency )
 
-[comment]: <> (Transfer interface outlines the exposed web methods, @POST annotation )
-###Api
-
-[comment]: <> (@Controller works in the same way as in Spring )
-[comment]: <> (@Context tells Micronaut this bean is eagerly instanstiated)
-[comment]: <> (Using Schema validation as apposed Bean Validation, that a preference)
+###Application.yml
+- application.yml properties can be overridden by system properties
 
 ###TransferEndPoint
 
-[comment]: <> (Controller annotation Write a few notes on Hexagonal Architecture, Find a diagram)
+[comment]: <> ( interface outlines the exposed web methods, @POST annotation )
+- Api.Endpoints.Transfer
+- Json Schema Validation used instead of Bean Validation Annotations (schema can be shared with frontend clients)
+- @Controller
+- @Context
 
-- Json Schema Validation used instead of Bean Validation Annotations, schema can be shared with frontend team
+ [comment]: <> (@Controller works in the same way as in Spring )
+ [comment]: <> (@Context tells Micronaut this bean is eagerly instanstiated)
+ [comment]: <> (Using Schema validation as apposed Bean Validation, that a preference)
 
-###Testing
+ [comment]: <> (Controller annotation Write a few notes on Hexagonal Architecture, Find a diagram)
 
-- Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking
+###TransferEndPointContractTest
+ - @MockBean
+ - @Replaces
+ - Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking
 
-### Management EndPoints
+###CORSEndpointTest
+- Using Options Method to confirm Http Server configured correctly
 
-- Readiness
-- Liveness
+###ManagementEndpointsTest
+- /actuator/health/readiness
+- /actuator/health/liveness
 
-### Cors
-
-- Test setup using Options request
-
-### Metrics
-
+###MetricsEndpointTest
 - Prometheus Micrometer
-
-[comment]: <> (Performance Test)
+- /actuator/prometheus
 
 [comment]: <> (other notable features - Kubernetes Config Map Configuration, so Guides cloud )
