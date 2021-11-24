@@ -20,8 +20,6 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 - [Micronaut Guides](https://micronaut.io/guides/)
 - [Micronaut Launch](https://micronaut.io/launch/)
 
-[comment]: New Page
-
 ### Project Structure
 - Overview  of project -  Hexagonal Architecture
 - 
@@ -32,32 +30,30 @@ Structure / Hexagonal / Domain / Adapters / Application
 for more info [Hexagonal Architecture article](https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c)
 
 
-[comment]: New Page
-
-###Starter.kt
+### Starter.kt
 - Entry Point -> Create Application Context using builder
 
-###Application.yml
+### Application.yml
 - application.yml properties can be overridden by system properties
 
-###TransferEndPoint
+### TransferEndPoint
 
   - Api.Endpoints.Transfer
   - Json Schema Validation used instead of Bean Validation Annotations (schema can be shared with frontend clients)
   - @Controller
   - @Context
 
-###TransferEndPointContractTest
+### TransferEndPointContractTest
   - Testing - Bean Replacing,  EmbeddedServer , Ktor Client, Mocking
 
-###CORSEndpointTest
+### CORSEndpointTest
    - Using Options Method to confirm Http Server configured correctly
 
-###ManagementEndpointsTest
+### ManagementEndpointsTest
    - /actuator/health/readiness  
    - /actuator/health/liveness 
 
-###MetricsEndpointTest
+### MetricsEndpointTest
    - Prometheus Micrometer
    - /actuator/prometheus
 
