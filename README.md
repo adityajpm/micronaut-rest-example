@@ -22,7 +22,7 @@ Similar to Spring Boot but has faster boot time, as most of the framework logic 
 
 ### Project Structure
 - Overview  of project -  Hexagonal Architecture
-- 
+
 Structure / Hexagonal / Domain / Adapters / Application
 
 ![Diagram](doc/HexagonalArchitecture.png)
